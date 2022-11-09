@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"
+	xmlns:x="http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+	xmlns:v="urn:schemas-microsoft-com:vml"
+	targetNamespace="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:element name="formControlPr" type="CT_FormControlPr" />
+	<xsd:simpleType name="ST_ObjectType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Button" />
+			<xsd:enumeration value="CheckBox" />
+			<xsd:enumeration value="Drop" />
+			<xsd:enumeration value="GBox" />
+			<xsd:enumeration value="Label" />
+			<xsd:enumeration value="List" />
+			<xsd:enumeration value="Radio" />
+			<xsd:enumeration value="Scroll" />
+			<xsd:enumeration value="Spin" />
+			<xsd:enumeration value="EditBox" />
+			<xsd:enumeration value="Dialog" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_Checked">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="Unchecked" />
+			<xsd:enumeration value="Checked" />
+			<xsd:enumeration value="Mixed" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_DropStyle">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="combo" />
+			<xsd:enumeration value="comboedit" />
+			<xsd:enumeration value="simple" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_SelType">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="single" />
+			<xsd:enumeration value="multi" />
+			<xsd:enumeration value="extended" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_TextHAlign">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="left" />
+			<xsd:enumeration value="center" />
+			<xsd:enumeration value="right" />
+			<xsd:enumeration value="justify" />
+			<xsd:enumeration value="distributed" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_TextVAlign">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="top" />
+			<xsd:enumeration value="center" />
+			<xsd:enumeration value="bottom" />
+			<xsd:enumeration value="justify" />
+			<xsd:enumeration value="distributed" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ST_EditValidation">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="text" />
+			<xsd:enumeration value="integer" />
+			<xsd:enumeration value="number" />
+			<xsd:enumeration value="reference" />
+			<xsd:enumeration value="formula" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CT_ListItem">
+		<xsd:attribute name="val" type="xsd:string" use="required" />
+	</xsd:complexType>
+	<xsd:complexType name="CT_ListItems">
+		<xsd:sequence>
+			<xsd:element name="item" type="CT_ListItem" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="extLst" type="x:CT_ExtensionList" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CT_FormControlPr">
+		<xsd:sequence>
+			<xsd:element name="itemLst" type="CT_ListItems" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="extLst" type="x:CT_ExtensionList" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="objectType" type="ST_ObjectType" use="optional" />
+		<xsd:attribute name="checked" type="ST_Checked" use="optional" />
+		<xsd:attribute name="colored" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="dropLines" type="xsd:unsignedInt" use="optional" default="8" />
+		<xsd:attribute name="dropStyle" type="ST_DropStyle" use="optional" />
+		<xsd:attribute name="dx" type="xsd:unsignedInt" use="optional" default="80" />
+		<xsd:attribute name="firstButton" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="fmlaGroup" type="x:ST_Formula" use="optional" />
+		<xsd:attribute name="fmlaLink" type="x:ST_Formula" use="optional" />
+		<xsd:attribute name="fmlaRange" type="x:ST_Formula" use="optional" />
+		<xsd:attribute name="fmlaTxbx" type="x:ST_Formula" use="optional" />
+		<xsd:attribute name="horiz" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="inc" type="xsd:unsignedInt" use="optional" default="1" />
+		<xsd:attribute name="justLastX" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="lockText" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="max" type="xsd:unsignedInt" use="optional" />
+		<xsd:attribute name="min" type="xsd:unsignedInt" use="optional" default="0" />
+		<xsd:attribute name="multiSel" type="xsd:string" use="optional" />
+		<xsd:attribute name="noThreeD" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="noThreeD2" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="page" type="xsd:unsignedInt" use="optional" />
+		<xsd:attribute name="sel" type="xsd:unsignedInt" use="optional" />
+		<xsd:attribute name="seltype" type="ST_SelType" use="optional" default="single" />
+		<xsd:attribute name="textHAlign" type="ST_TextHAlign" use="optional" default="left" />
+		<xsd:attribute name="textVAlign" type="ST_TextVAlign" use="optional" default="top" />
+		<xsd:attribute name="val" type="xsd:unsignedInt" use="optional" />
+		<xsd:attribute name="widthMin" type="xsd:unsignedInt" use="optional" />
+		<xsd:attribute name="editVal" type="ST_EditValidation" use="optional" />
+		<xsd:attribute name="multiLine" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="verticalBar" type="xsd:boolean" use="optional" default="false" />
+		<xsd:attribute name="passwordEdit" type="xsd:boolean" use="optional" default="false" />
+	</xsd:complexType>
+</xsd:schema>

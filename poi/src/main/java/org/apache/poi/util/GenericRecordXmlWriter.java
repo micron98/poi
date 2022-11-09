@@ -243,7 +243,9 @@ public class GenericRecordXmlWriter implements Closeable {
 
         final boolean isComplex = isComplex(obj);
         if (attributePhase == isComplex) {
-            return isComplex ? Stream.of(new AbstractMap.SimpleEntry<>(me.getKey(), () -> obj)) : Stream.empty();
+            return isComplex ? Stream.of(new AbstractMap.SimpleEntry<String,Supplier<?>>(me.getKey(), () -> 
+            	obj
+            )) : Stream.empty();
         }
 
         final int oldChildIndex = childIndex;
